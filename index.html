@@ -1,73 +1,42 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Aditi Gupta - AI Engineering Portfolio">
+  <meta name="description" content="Aditi Gupta - AI Engineer building AI agents for healthcare and business data">
   <title>Aditi Gupta | AI Engineering</title>
 
   <style>
-    
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 20px;
-  color: color: var(--blue);
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.project-link:hover {
-  color: var(--navy);
-  text-decoration: underline;
-}
-
-    
-:root {
-  --navy: #123F45;
-  --blue: #168B88;
-  --text: #26383B;
-  --muted: #647779;
-  --background: #FFFFFF;
-  --soft: #F0F8F7;
-  --border: #D8E9E7;
-}
-
-
-    * {
-      box-sizing: border-box;
+    :root {
+      --navy: #123F45;
+      --blue: #168B88;
+      --text: #26383B;
+      --muted: #647779;
+      --background: #FFFFFF;
+      --soft: #F0F8F7;
+      --border: #D8E9E7;
+      --tag-bg: #E6F3F1;
+      --tag-text: #0D5558;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       color: var(--text);
       background: var(--background);
       line-height: 1.7;
     }
 
-    a {
-      color: var(--blue);
-      text-decoration: none;
-    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    a:hover {
-      text-decoration: underline;
-    }
+    .container { width: min(1100px, 90%); margin: auto; }
 
-    .container {
-      width: min(1050px, 90%);
-      margin: auto;
-    }
-
+    /* ---------- Navigation ---------- */
     header {
       background: white;
       border-bottom: 1px solid var(--border);
@@ -80,30 +49,42 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 0;
+      padding: 16px 0;
       gap: 20px;
     }
 
-    .logo {
-      font-size: 20px;
-      font-weight: 750;
-      color: var(--navy);
-    }
+    .logo { font-size: 20px; font-weight: 750; color: var(--navy); }
 
     .nav-links {
       display: flex;
+      align-items: center;
       gap: 22px;
       flex-wrap: wrap;
     }
 
-    .nav-links a {
-      color: var(--text);
-      font-size: 14px;
-      font-weight: 500;
+    .nav-links a { color: var(--text); font-size: 14px; font-weight: 500; }
+
+    .nav-links a.nav-resume {
+      color: var(--navy);
+      border: 1.5px solid var(--navy);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-weight: 600;
     }
 
+    .nav-links a.nav-resume:hover {
+      background: var(--navy);
+      color: white;
+      text-decoration: none;
+    }
+
+    /* ---------- Hero ---------- */
     .hero {
-      padding: 100px 0 80px;
+      padding: 90px 0 80px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 56px;
+      align-items: center;
     }
 
     .eyebrow {
@@ -115,18 +96,14 @@
     }
 
     h1 {
-      font-size: clamp(36px, 6vw, 58px);
-      line-height: 1.2;
+      font-size: clamp(36px, 5vw, 54px);
+      line-height: 1.15;
       color: var(--navy);
-      margin: 18px 0;
+      margin: 16px 0 20px;
       letter-spacing: -1.5px;
     }
 
-    .hero p {
-      max-width: 720px;
-      color: var(--muted);
-      font-size: 18px;
-    }
+    .hero p { color: var(--muted); font-size: 18px; margin: 0 0 14px; }
 
     .buttons {
       display: flex;
@@ -157,14 +134,69 @@
       border: 1px solid var(--border);
     }
 
-    section {
-      padding: 65px 0;
-      scroll-margin-top: 80px;
+    .button.secondary:hover { background: var(--soft); }
+
+    /* "Currently building" card */
+    .now-card {
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
     }
 
-    .soft {
-      background: var(--soft);
+    .now-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
     }
+
+    .now-label {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: white;
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .now-card h2 { font-size: 22px; margin: 0 0 8px; }
+    .now-card p { color: var(--muted); font-size: 15px; margin: 0 0 14px; }
+
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px;
+      display: grid;
+      gap: 8px;
+      font-size: 15px;
+    }
+
+    .check-list li { display: flex; align-items: center; gap: 10px; }
+    .check-list svg { flex-shrink: 0; }
+
+    /* ---------- Sections ---------- */
+    section { padding: 70px 0; scroll-margin-top: 80px; }
+    .soft { background: var(--soft); }
 
     h2 {
       color: var(--navy);
@@ -173,14 +205,12 @@
       letter-spacing: -0.5px;
     }
 
-    .section-description {
-      color: var(--muted);
-      margin-bottom: 30px;
-    }
+    .section-description { color: var(--muted); margin: 0 0 30px; }
 
+    /* ---------- Project cards ---------- */
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
     }
 
@@ -189,24 +219,29 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 26px;
+      display: flex;
+      flex-direction: column;
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(24,49,83,0.08);
+      box-shadow: 0 12px 30px rgba(18, 63, 69, 0.08);
     }
 
-    .card h3 {
-      margin: 0 0 10px;
-      color: var(--navy);
-      font-size: 20px;
+    .card.featured { border-color: #A9D3CF; }
+
+    .card-label {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
     }
 
-    .card p {
-      color: var(--muted);
-      font-size: 15px;
-    }
+    .card h3 { margin: 0 0 10px; color: var(--navy); font-size: 20px; line-height: 1.35; }
+    .card p { color: var(--muted); font-size: 15px; margin: 0; }
 
     .tags {
       display: flex;
@@ -215,47 +250,87 @@
       margin-top: 18px;
     }
 
-   .tag {
-    background: #e6f3f1;
-    color: #0d5558;
-    border-radius: 6px;
-    padding: 4px 10px;
-    font-size: 12px;
-    font-weight: 600;
-}
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+      padding-top: 20px;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .project-link:hover { color: var(--navy); }
+
+    .project-note {
+      margin-top: auto;
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    /* ---------- Skills (compact) ---------- */
+    .skills-list { display: grid; gap: 22px; }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .skill-row h3 { margin: 4px 0 0; color: var(--navy); font-size: 16px; }
+    .skill-row .tags { margin-top: 0; }
+    .skill-row .tag { background: white; border: 1px solid var(--border); font-size: 13px; }
+
+    /* ---------- Experience ---------- */
     .experience {
       border-left: 3px solid var(--border);
       padding-left: 22px;
       margin: 28px 0;
     }
 
-    .experience h3 {
-      color: var(--navy);
-      margin-bottom: 5px;
+    .experience-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px 16px;
     }
 
-    .experience p {
-      color: var(--muted);
-      margin-top: 5px;
+    .experience h3 { color: var(--navy); margin: 0; font-size: 19px; }
+    .experience .meta { color: var(--blue); font-weight: 600; font-size: 15px; margin: 2px 0 0; }
+    .experience .dates { color: var(--muted); font-size: 14px; }
+    .experience p { color: var(--muted); margin: 6px 0 0; }
+
+    /* Placeholder text: replace before publishing */
+    .fill-in { background: #FFF3C4; color: #6B5300; padding: 0 4px; border-radius: 4px; }
+
+    /* ---------- Education (compact) ---------- */
+    .edu-list { list-style: none; padding: 0; margin: 0; }
+
+    .edu-item {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
     }
 
-    .education-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 22px;
-      margin-top: 16px;
-    }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-item h3 { margin: 0; color: var(--navy); font-size: 17px; }
+    .edu-item p { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
 
-    .education-card h3 {
-      margin: 0 0 5px;
-      color: var(--navy);
-    }
-
-    .education-card p {
-      margin: 5px 0;
-      color: var(--muted);
-    }
+    /* ---------- Contact & footer ---------- */
+    .contact-email { font-size: 17px; font-weight: 600; }
 
     footer {
       text-align: center;
@@ -265,27 +340,17 @@
       font-size: 14px;
     }
 
+    /* ---------- Phones and small tablets ---------- */
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; gap: 36px; padding: 60px 0; }
+      .grid { grid-template-columns: 1fr; }
+      .skill-row { grid-template-columns: 1fr; gap: 8px; }
+      section { padding: 50px 0; }
+    }
+
     @media (max-width: 700px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        gap: 12px;
-      }
-
-      .hero {
-        padding: 65px 0;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      section {
-        padding: 45px 0;
-      }
+      nav { flex-direction: column; align-items: flex-start; }
+      .nav-links { gap: 12px 16px; }
     }
   </style>
 </head>
@@ -305,47 +370,66 @@
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
           <a href="#contact">Contact</a>
+          <!-- Upload your resume PDF to the repo with this exact file name -->
+          <a href="Aditi_Gupta_Resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-resume">Resume</a>
         </div>
       </nav>
     </div>
   </header>
 
-  <!-- HOME -->
   <main>
+
+    <!-- HERO -->
     <div class="container hero" id="home">
-      <div class="eyebrow">
-        Software Engineer · AI Engineering
+      <div>
+        <div class="eyebrow">AI Engineer · Applied AI</div>
+
+        <h1>I build AI agents for healthcare and business data.</h1>
+
+        <p>
+          Hi, I'm Aditi. My background is in pharmaceutical analytics,
+          enterprise banking software, and full-stack development. Now I
+          build agentic AI systems with human review, audit trails, and
+          guardrails built in.
+        </p>
+
+        <p>
+          M.S. in Computer Science, Stevens Institute of Technology.
+        </p>
+
+        <div class="buttons">
+          <a href="#projects" class="button">Explore Projects</a>
+          <a href="https://www.linkedin.com/in/aditi-gupta-78bb518b/"
+             target="_blank" rel="noopener noreferrer"
+             class="button secondary">LinkedIn</a>
+        </div>
       </div>
 
-      <h1>
-        Building intelligent solutions<br>
-        for real-world problems.
-      </h1>
+      <aside class="now-card" aria-label="Currently building">
+        <div class="now-top">
+          <span class="now-label">Currently building</span>
+          <span class="status"><span class="status-dot" aria-hidden="true"></span>In progress</span>
+        </div>
 
-      <p>
-        Hi, I'm Aditi Gupta. I'm a software engineer
-        with a background in enterprise software development,
-        pharmaceutical analytics, and AI applications.
-      </p>
+        <h2>Guardrails for a browser agent</h2>
+        <p>
+          A safety layer around an agent that searches Yelp, so it stays
+          on task and can't be steered by the pages it reads.
+        </p>
 
-      <p>
-        I hold an M.S. in Computer Science from
-        Stevens Institute of Technology and enjoy
-        building practical solutions using Generative AI,
-        LLMs, and agentic workflows.
-      </p>
+        <ul class="check-list">
+          <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#168B88" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Domain allowlist</li>
+          <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#168B88" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Prompt-injection checks</li>
+          <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#168B88" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Step limits</li>
+          <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#168B88" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Output verification</li>
+        </ul>
 
-      <div class="buttons">
-        <a href="#projects" class="button">
-          Explore Projects
-        </a>
-
-        <a href="https://www.linkedin.com/in/aditi-gupta-78bb518b/"
-           target="_blank" rel="noopener noreferrer"
-           class="button secondary">
-          LinkedIn
-        </a>
-      </div>
+        <div class="tags">
+          <span class="tag">browser-use</span>
+          <span class="tag">GPT-4o-mini</span>
+          <span class="tag">Python</span>
+        </div>
+      </aside>
     </div>
 
     <!-- ABOUT -->
@@ -353,11 +437,12 @@
       <div class="container">
         <h2>About Me</h2>
         <p>
-          My experience spans enterprise banking technology,
-          pharmaceutical data analytics, and full-stack development.
-          I'm currently focused on AI Engineering, building
-          intelligent applications, and exploring how AI can
-          solve meaningful business problems.
+          I've worked with pharmaceutical sales data and built
+          enterprise banking software, so I know how messy real
+          business data is and how much accuracy matters. Now I'm focused
+          on AI engineering: building agents that work with that kind of
+          data, with the checks that make them safe to trust, like human
+          review, audit logging, and guardrails.
         </p>
       </div>
     </section>
@@ -368,100 +453,123 @@
         <h2>Selected Projects</h2>
 
         <p class="section-description">
-          A selection of my work in Generative AI,
-          Agentic AI, and machine learning.
+          Agentic AI systems, ML apps, and fine-tuning work.
         </p>
 
         <div class="grid">
 
-          <div class="card">
-            <h3>Conversational Sales AI</h3>
+          <div class="card featured">
+            <div class="card-label">Healthcare · Single agent</div>
+            <h3>Patient Risk Flagging Agent</h3>
             <p>
-              Built an AI-powered conversational interface
-              that translates natural language questions into
-              SQL queries for Sales Data.
+              A LangGraph agent that reads a clinical note, checks
+              medications against kidney function, and scores patient
+              risk as Low, Medium, or High. It pulls clinical guidance
+              with RAG (ChromaDB), pauses for human review on high-risk
+              or unsafe cases, and logs every outcome to an audit trail.
+            </p>
+            <div class="tags">
+              <span class="tag">LangGraph</span>
+              <span class="tag">GPT-4o-mini</span>
+              <span class="tag">ChromaDB</span>
+              <span class="tag">Python</span>
+            </div>
+            <a class="project-link"
+               href="https://github.com/AditiGuptaz/Patient-Risk-Flagging-Agent"
+               target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+          </div>
+
+          <div class="card featured">
+            <div class="card-label">Healthcare · Multi-agent</div>
+            <h3>Prior Authorization Multi-Agent System</h3>
+            <p>
+              Four CrewAI agents (extractor, policy checker, writer,
+              reviewer) that check an MRI request against a payer's
+              criteria and draft the authorization letter. If the
+              reviewer finds the letter overstates the case, it sends it
+              back to the writer with feedback, up to three rounds.
+            </p>
+            <div class="tags">
+              <span class="tag">CrewAI</span>
+              <span class="tag">Multi-agent</span>
+              <span class="tag">Python</span>
+            </div>
+            <a class="project-link"
+               href="https://github.com/AditiGuptaz/PRIOR-AUTHORIZATION-MULTI-AGENT-SYSTEM"
+               target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+          </div>
+
+          <div class="card">
+            <div class="card-label">Safety · Guardrails</div>
+            <h3>AI Agent Permission Guard</h3>
+            <p>
+              A safety layer between an agent and its tools. Every tool
+              call is classified as allow, needs approval, or block.
+              Risky actions wait for a human, every decision is logged,
+              and prompt-injection tests were part of the build from day one.
+            </p>
+            <div class="tags">
+              <span class="tag">LangGraph</span>
+              <span class="tag">Python</span>
+            </div>
+            <!-- Replace this note with a GitHub link once the repo is public -->
+            <span class="project-note">Repo coming soon</span>
+          </div>
+
+          <div class="card">
+            <div class="card-label">Data · Text-to-SQL</div>
+            <h3>Conversational Sales Data Agent</h3>
+            <p>
+              Ask a question about sales data in plain English and get an
+              answer. A LangGraph agent turns the question into SQL, runs
+              it, and explains the result. Served through a FastAPI
+              endpoint with caching, so repeat questions come back fast.
             </p>
             <div class="tags">
               <span class="tag">LangGraph</span>
               <span class="tag">GPT-4o</span>
+              <span class="tag">FastAPI</span>
               <span class="tag">SQLite</span>
-              <span class="tag">Python</span>
             </div>
-            
             <a class="project-link"
                href="https://github.com/AditiGuptaz/867-Sales-Agent-API-with-caching"
-               target="_blank"
-               rel="noopener noreferrer">
-              View on GitHub ↗
-            </a>
-
+               target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
           </div>
 
           <div class="card">
-            <h3>Prior Authorization AI Agent</h3>
+            <div class="card-label">ML app · Deployment</div>
+            <h3>Insurance Premium Category Predictor</h3>
             <p>
-              An agentic AI project exploring how multiple
-              AI agents can coordinate tasks in healthcare
-              prior authorization workflows.
+              An end-to-end ML app: a RandomForest model with engineered
+              features (BMI, age group, lifestyle risk, city tier), served
+              through FastAPI with Pydantic validation and a Streamlit
+              front end. Packaged with Docker and published to Docker Hub.
             </p>
             <div class="tags">
-              <span class="tag">Agentic AI</span>
-              <span class="tag">LangGraph</span>
-              <span class="tag">Healthcare AI</span>
+              <span class="tag">scikit-learn</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">Pydantic</span>
+              <span class="tag">Docker</span>
             </div>
-            
-            <a class="project-link"
-               href="https://github.com/AditiGuptaz/PRIOR-AUTHORIZATION-MULTI-AGENT-SYSTEM"
-               target="_blank"
-               rel="noopener noreferrer">
-              View on GitHub ↗
-            </a>
-
+            <!-- Replace this note with a GitHub or Docker Hub link -->
+            <span class="project-note">Repo coming soon</span>
           </div>
 
           <div class="card">
-            <h3>Patient Risk Flagging Agent</h3>
+            <div class="card-label">Fine-tuning</div>
+            <h3>QLoRA Sentiment Classifier</h3>
             <p>
-              Exploring AI-powered workflows to identify
-              potential patient risk indicators and support
-              structured healthcare data analysis.
+              Fine-tuned TinyLlama for sentiment classification using
+              QLoRA (4-bit quantization plus LoRA) on a free Colab GPU.
             </p>
             <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">AI Agents</span>
-              <span class="tag">LangChain</span>
-              <span class="tag">Healthcare</span>
+              <span class="tag">QLoRA</span>
+              <span class="tag">TinyLlama</span>
+              <span class="tag">Colab</span>
             </div>
-            
             <a class="project-link"
-               href="https://github.com/AditiGuptaz/Patient-Risk-Flagging-Agent"
-               target="_blank"
-               rel="noopener noreferrer">
-              View on GitHub ↗
-            </a>
-
-          </div>
-
-          <div class="card">
-            <h3>Probability for AI by Code in Place</h3>
-            <p>
-              Hands-on probability modeling exercises,
-              including statistical inference, maximum
-              likelihood estimation, and Bayesian reasoning.
-            </p>
-            <div class="tags">
-              <span class="tag">Probability</span>
-              <span class="tag">Statistics</span>
-              <span class="tag">Artificial Intelligence</span>
-            </div>
-            
-            <a class="project-link"
-               href="https://pai.stanford.edu/pai1/portfolio/GCiOHTZ4Y7g60ejYgS1sdCw1G123"
-               target="_blank"
-               rel="noopener noreferrer">
-              View My PAI Portfolio ↗
-            </a>
-
+               href="https://github.com/AditiGuptaz/qlora-sentiment-classifier"
+               target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
           </div>
 
         </div>
@@ -473,70 +581,103 @@
       <div class="container">
         <h2>Technical Skills</h2>
 
-        <div class="grid">
-          <div class="card">
-            <h3>AI & Generative AI</h3>
-            <p>
-              LangGraph, LangChain, OpenAI APIs,
-              RAG, LLMs
-            </p>
+        <div class="skills-list">
+          <div class="skill-row">
+            <h3>AI &amp; Agents</h3>
+            <div class="tags">
+              <span class="tag">LangGraph</span>
+              <span class="tag">LangChain</span>
+              <span class="tag">CrewAI</span>
+              <span class="tag">OpenAI APIs</span>
+              <span class="tag">RAG</span>
+              <span class="tag">ChromaDB</span>
+              <span class="tag">Human-in-the-loop</span>
+              <span class="tag">Guardrails</span>
+              <span class="tag">QLoRA fine-tuning</span>
+            </div>
           </div>
 
-          <div class="card">
-            <h3>Programming & Backend</h3>
-            <p>
-              Python, SQL, JavaScript,
-              FastAPI, SQLite, SQL Server
-            </p>
+          <div class="skill-row">
+            <h3>Programming &amp; Backend</h3>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">SQL</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">Pydantic</span>
+              <span class="tag">Docker</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">SQL Server</span>
+            </div>
           </div>
 
-          <div class="card">
-            <h3>Data Analytics</h3>
-            <p>
-              Tableau, Excel,
-              KPI Reporting, Data Visualization
-            </p>
+          <div class="skill-row">
+            <h3>Data &amp; ML</h3>
+            <div class="tags">
+              <span class="tag">scikit-learn</span>
+              <span class="tag">Tableau</span>
+              <span class="tag">Excel</span>
+              <span class="tag">KPI Reporting</span>
+              <span class="tag">Data Visualization</span>
+            </div>
           </div>
 
-          <div class="card">
+          <div class="skill-row">
             <h3>Web Development</h3>
-            <p>
-              React, Node.js, Bootstrap
-            </p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">Redis</span>
+              <span class="tag">Streamlit</span>
+              <span class="tag">Bootstrap</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- EXPERIENCE -->
+    <!-- Replace the yellow placeholders with your real titles, companies and dates -->
     <section id="experience">
       <div class="container">
         <h2>Professional Experience</h2>
 
         <div class="experience">
-          <h3>Pharmaceutical Analytics</h3>
+          <div class="experience-head">
+            <h3>Pharmaceutical Analytics</h3>
+            <span class="dates"><span class="fill-in">[Start year] – [End year]</span></span>
+          </div>
+          <p class="meta">Acuitas 360 · <span class="fill-in">[Your title]</span></p>
           <p>
-            Developed business intelligence dashboards
-            and analyzed pharmaceutical commercial sales,
-            customer trends, market share, and KPIs
-            using SQL and Tableau.
+            Built business intelligence dashboards and analyzed
+            pharmaceutical commercial sales, customer trends, market share,
+            and KPIs using SQL and Tableau.
           </p>
         </div>
 
         <div class="experience">
-          <h3>Enterprise Software Engineering</h3>
+          <div class="experience-head">
+            <h3>Enterprise Software Engineering</h3>
+            <span class="dates"><span class="fill-in">[Start year] – [End year]</span></span>
+          </div>
+          <p class="meta"><span class="fill-in">[Company]</span> · <span class="fill-in">[Your title]</span></p>
           <p>
-            Developed and supported banking applications
-            using Temenos T24, including application
-            development, data migration, and integration.
+            Developed and supported banking applications on Temenos T24,
+            including application development, data migration, and
+            integration.
           </p>
         </div>
 
         <div class="experience">
-          <h3>Full-Stack Development</h3>
+          <div class="experience-head">
+            <h3>Full-Stack Development</h3>
+            <span class="dates"><span class="fill-in">[Years]</span></span>
+          </div>
+          <p class="meta">Stevens Institute of Technology · Graduate projects</p>
           <p>
-            Built web applications using React,
-            Node.js, and JavaScript.
+            Built full-stack web applications with React, Node.js,
+            MongoDB, and Redis.
           </p>
         </div>
       </div>
@@ -545,33 +686,28 @@
     <!-- EDUCATION -->
     <section id="education" class="soft">
       <div class="container">
-        <h2>Education & Continuous Learning</h2>
+        <h2>Education &amp; Continuous Learning</h2>
 
-        <div class="education-card">
-          <h3>Master of Science in Computer Science</h3>
-          <p>Stevens Institute of Technology, New Jersey</p>
-        </div>
-
-        <div class="education-card">
-          <h3>Bachelor of Technology in Computer Science</h3>
-          <p>Rajasthan Technical University, India</p>
-        </div>
-
-        <div class="education-card">
-          <h3>Probability for AI (PAI)</h3>
-          <p>
-            Stanford University · Code in Place
-          </p>
-          <p>
-            Six-week learning program exploring
-            probability, statistical inference,
-            maximum likelihood estimation, and
-            the mathematical foundations of AI
-            through hands-on exercises.
-          </p>
-        </div>
-
-
+        <ul class="edu-list">
+          <li class="edu-item">
+            <h3>M.S. in Computer Science</h3>
+            <p>Stevens Institute of Technology, New Jersey</p>
+          </li>
+          <li class="edu-item">
+            <h3>B.Tech in Computer Science</h3>
+            <p>Rajasthan Technical University, India</p>
+          </li>
+          <li class="edu-item">
+            <h3>Probability for AI (PAI)</h3>
+            <p>
+              Stanford University · Code in Place · Six-week program on
+              probability, statistical inference, maximum likelihood
+              estimation, and Bayesian reasoning.
+              <a href="https://pai.stanford.edu/pai1/portfolio/GCiOHTZ4Y7g60ejYgS1sdCw1G123"
+                 target="_blank" rel="noopener noreferrer">View portfolio ↗</a>
+            </p>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -581,30 +717,29 @@
         <h2>Let's Connect</h2>
 
         <p>
-          I'm interested in AI Engineering and Applied AI
-          opportunities, and enjoy connecting with people
-          building meaningful AI applications.
+          I'm open to AI engineering and applied AI roles, and I'm always
+          happy to talk with people building AI for real business data.
         </p>
+
+        <p><a class="contact-email" href="mailto:aditi.gup30@gmail.com">aditi.gup30@gmail.com</a></p>
 
         <div class="buttons">
           <a href="https://www.linkedin.com/in/aditi-gupta-78bb518b/"
              target="_blank" rel="noopener noreferrer"
-             class="button">
-            LinkedIn
-          </a>
-
+             class="button">LinkedIn</a>
           <a href="https://github.com/AditiGuptaz"
              target="_blank" rel="noopener noreferrer"
-             class="button secondary">
-            GitHub
-          </a>
+             class="button secondary">GitHub</a>
+          <a href="Aditi_Gupta_Resume.pdf"
+             target="_blank" rel="noopener noreferrer"
+             class="button secondary">Resume</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    © 2026 Aditi Gupta · Built with HTML & CSS
+    © 2026 Aditi Gupta · Built with HTML &amp; CSS
   </footer>
 
 </body>
