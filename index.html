@@ -9,6 +9,18 @@
   <!-- Browser tab icon (favicon): AG on the site's dark teal -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23123F45'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='700' fill='%238FE0D6'%3EAG%3C/text%3E%3C/svg%3E">
 
+  <!-- Pick light or dark before the page shows: saved choice first, then the device setting -->
+  <script>
+    (function () {
+      var theme = null;
+      try { theme = localStorage.getItem("theme"); } catch (e) {}
+      if (theme !== "light" && theme !== "dark") {
+        theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+
   <style>
     :root {
       --navy: #123F45;
@@ -20,6 +32,33 @@
       --border: #D8E9E7;
       --tag-bg: #E6F3F1;
       --tag-text: #0D5558;
+      --surface: #FFFFFF;
+      --btn-bg: #123F45;
+      --btn-text: #FFFFFF;
+      --badge-bg: #123F45;
+      --badge-text: #8FE0D6;
+      --featured: #A9D3CF;
+      color-scheme: light;
+    }
+
+    /* Dark mode colours (switched on by the button in the nav bar) */
+    :root[data-theme="dark"] {
+      --navy: #E3F1EF;
+      --blue: #4FC4BC;
+      --text: #D5E3E1;
+      --muted: #9DB2B0;
+      --background: #0C1719;
+      --soft: #111F22;
+      --border: #24383B;
+      --tag-bg: #17302F;
+      --tag-text: #9ADBD4;
+      --surface: #142427;
+      --btn-bg: #4FC4BC;
+      --btn-text: #06201F;
+      --badge-bg: #4FC4BC;
+      --badge-text: #06201F;
+      --featured: #2F5E5B;
+      color-scheme: dark;
     }
 
     * { box-sizing: border-box; }
@@ -41,7 +80,7 @@
 
     /* ---------- Navigation ---------- */
     header {
-      background: white;
+      background: var(--background);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
@@ -74,8 +113,8 @@
       width: 42px;
       height: 42px;
       border-radius: 10px;
-      background: var(--navy);
-      color: #8FE0D6;
+      background: var(--badge-bg);
+      color: var(--badge-text);
       font-size: 17px;
       font-weight: 800;
       letter-spacing: -0.5px;
@@ -99,10 +138,30 @@
     }
 
     .nav-links a.nav-resume:hover {
-      background: var(--navy);
-      color: white;
+      background: var(--btn-bg);
+      color: var(--btn-text);
       text-decoration: none;
     }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--navy);
+      cursor: pointer;
+    }
+
+    .theme-toggle:hover { background: var(--soft); }
+    .theme-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    .theme-toggle .icon-sun { display: none; }
+    :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+    :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
     /* ---------- Hero ---------- */
     .hero {
@@ -140,8 +199,8 @@
 
     .button {
       display: inline-block;
-      background: var(--navy);
-      color: white;
+      background: var(--btn-bg);
+      color: var(--btn-text);
       padding: 12px 22px;
       border-radius: 8px;
       font-weight: 600;
@@ -150,12 +209,13 @@
 
     .button:hover {
       background: var(--blue);
+      color: var(--btn-text);
       transform: translateY(-2px);
       text-decoration: none;
     }
 
     .button.secondary {
-      background: white;
+      background: var(--surface);
       color: var(--navy);
       border: 1px solid var(--border);
     }
@@ -190,7 +250,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: white;
+      background: var(--surface);
       border-radius: 999px;
       padding: 3px 10px;
       font-size: 12px;
@@ -218,7 +278,8 @@
     }
 
     .check-list li { display: flex; align-items: center; gap: 10px; }
-    .check-list svg { flex-shrink: 0; }
+    .check-list svg { flex-shrink: 0; stroke: var(--blue); }
+    .check-list svg.todo { stroke: var(--muted); }
     .check-list .next-label { color: var(--muted); font-size: 13px; }
 
     /* ---------- Sections ---------- */
@@ -242,7 +303,7 @@
     }
 
     .card {
-      background: white;
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 26px;
@@ -256,7 +317,7 @@
       box-shadow: 0 12px 30px rgba(18, 63, 69, 0.08);
     }
 
-    .card.featured { border-color: #A9D3CF; }
+    .card.featured { border-color: var(--featured); }
 
     .card-label {
       color: var(--blue);
@@ -483,6 +544,10 @@
           <a href="#contact">Contact</a>
           <!-- Upload your resume PDF to the repo with this exact file name -->
           <a href="Aditi_Gupta_Resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-resume">Resume</a>
+          <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch between light and dark mode" title="Light / dark mode">
+            <svg class="icon-moon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.2A8.5 8.5 0 1 1 10.8 3.5a6.6 6.6 0 0 0 9.7 9.7z"/></svg>
+            <svg class="icon-sun" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          </button>
         </div>
       </nav>
     </div>
@@ -532,8 +597,8 @@
         <ul class="check-list">
           <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#168B88" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Failure analysis of early runs</li>
           <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#168B88" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Constrained task prompt (12 steps down to 4)</li>
-          <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#647779" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/></svg><span>Test set with repeated runs <span class="next-label">· next</span></span></li>
-          <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#647779" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/></svg><span>Output verification against the page <span class="next-label">· next</span></span></li>
+          <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" class="todo" fill="none" stroke="#647779" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/></svg><span>Test set with repeated runs <span class="next-label">· next</span></span></li>
+          <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" class="todo" fill="none" stroke="#647779" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/></svg><span>Output verification against the page <span class="next-label">· next</span></span></li>
         </ul>
 
         <div class="tags">
@@ -892,8 +957,22 @@
   </main>
 
   <footer>
-    © 2026 Aditi Gupta · Built with HTML &amp; CSS
+    © 2026 Aditi Gupta · Built with HTML, CSS &amp; JavaScript
   </footer>
+
+  <!-- Light / dark button: switch the theme and remember the choice -->
+  <script>
+    (function () {
+      var button = document.getElementById("theme-toggle");
+      if (!button) return;
+      button.addEventListener("click", function () {
+        var root = document.documentElement;
+        var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem("theme", next); } catch (e) {}
+      });
+    })();
+  </script>
 
 </body>
 </html>
