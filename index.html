@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Aditi Gupta - AI Engineer building AI agents for healthcare and business data">
+  <meta name="description" content="Aditi Gupta - AI Engineer building AI agents and RAG systems, from retrieval to evaluation">
   <title>Aditi Gupta | AI Engineering</title>
+
+  <!-- Browser tab icon (favicon): AG on the site's dark teal -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23123F45'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='700' fill='%238FE0D6'%3EAG%3C/text%3E%3C/svg%3E">
 
   <style>
     :root {
@@ -356,6 +359,7 @@
 
     .exp-list { margin: 8px 0 0; padding-left: 20px; color: var(--muted); font-size: 15px; }
     .exp-list li { margin-bottom: 4px; }
+    .experience p.exp-project { color: var(--navy); font-size: 14px; font-weight: 600; margin: 12px 0 0; }
 
     .edu-item .experience-head {
       display: flex;
@@ -433,13 +437,13 @@
       <div>
         <div class="eyebrow">AI Engineer · Applied AI</div>
 
-        <h1>I build AI agents for healthcare and business data.</h1>
+        <h1>I build AI agents and RAG systems, from retrieval to evaluation.</h1>
 
         <p>
-          Hi, I'm Aditi. I spent nearly 8 years in pharmaceutical analytics
-          and software engineering, working with sales, prescription, and
-          patient data. Now I build agentic AI systems with human review,
-          audit trails, and guardrails built in.
+          Hi, I'm Aditi. I spent nearly 8 years in analytics and software
+          engineering across healthcare and banking, working with sales,
+          prescription, and patient data. Now I build agentic AI systems
+          with human review, audit trails, and evaluation built in.
         </p>
 
         <p>
@@ -492,7 +496,7 @@
           business data is and how much accuracy matters. Now I'm focused
           on AI engineering: building agents that work with that kind of
           data, with the checks that make them safe to trust, like human
-          review, audit logging, and guardrails.
+          review, audit logging, and evaluation.
         </p>
       </div>
     </section>
@@ -503,7 +507,7 @@
         <h2>Selected Projects</h2>
 
         <p class="section-description">
-          Agentic AI systems, ML apps, and fine-tuning work.
+          Agentic AI systems, RAG and evaluation, ML apps, and fine-tuning work.
         </p>
 
         <div class="grid">
@@ -550,16 +554,17 @@
           </div>
 
           <div class="card">
-            <div class="card-label">Safety · Guardrails</div>
-            <h3>AI Agent Permission Guard</h3>
+            <div class="card-label">RAG · Evaluation</div>
+            <h3>RAG Chatbot and RAG Evaluation</h3>
             <p>
-              A safety layer between an agent and its tools. Every tool
-              call is classified as allow, needs approval, or block.
-              Risky actions wait for a human, every decision is logged,
-              and prompt-injection tests were part of the build from day one.
+              A chatbot that answers questions from an uploaded PDF, and
+              an evaluation pipeline that measures retrieval and answer
+              quality.
             </p>
             <div class="tags">
-              <span class="tag">LangGraph</span>
+              <span class="tag">RAG</span>
+              <span class="tag">OpenAI embeddings</span>
+              <span class="tag">Chroma</span>
               <span class="tag">Python</span>
             </div>
             <!-- Replace this note with a GitHub link once the repo is public -->
@@ -570,9 +575,9 @@
             <div class="card-label">Data · Text-to-SQL</div>
             <h3>Conversational Sales Data Agent</h3>
             <p>
-              Ask a question about sales data in plain English and get an
-              answer. A LangGraph agent turns the question into SQL, runs
-              it, and explains the result. Served through a FastAPI
+              Ask a question about sales data (57K+ transactions) in plain
+              English and get an answer. A LangGraph agent turns the
+              question into SQL, runs it, and explains the result. Served through a FastAPI
               endpoint with caching, so repeat questions come back fast.
             </p>
             <div class="tags">
@@ -636,11 +641,10 @@
 
         <p class="skills-label">Also work with</p>
         <div class="skills-more">
-          <p><strong>AI &amp; Agents:</strong> LangChain, OpenAI APIs, ChromaDB, human-in-the-loop, guardrails, QLoRA fine-tuning</p>
-          <p><strong>Backend:</strong> JavaScript, Pydantic, Docker, SQLite, SQL Server</p>
-          <p><strong>Data &amp; ML:</strong> scikit-learn, Snowflake, R, Excel (Advanced), market mix modeling, segmentation, promotion response modeling</p>
-          <p><strong>Pharma data:</strong> 867 sales, IQVIA Xponent, specialty pharmacy, GPO member files, promotion data, patient analytics</p>
-          <p><strong>Web:</strong> React, Node.js, MongoDB, Redis, Streamlit, Bootstrap</p>
+          <p><strong>AI &amp; Agents:</strong> LangChain, ChromaDB, RAG evaluation, QLoRA fine-tuning</p>
+          <p><strong>Backend &amp; Web:</strong> Pydantic, Docker, Streamlit, HTML, CSS, JavaScript, Node.js, React.js</p>
+          <p><strong>Data &amp; Analytics:</strong> MS Excel (Advanced), market mix modeling, segmentation, patient analytics</p>
+          <p><strong>Machine Learning:</strong> scikit-learn, logistic regression, neural networks, probabilistic models, MLE, gradient ascent</p>
         </div>
       </div>
     </section>
@@ -655,12 +659,17 @@
             <h3>Business Analyst</h3>
             <span class="dates">Jul 2024 – Mar 2025</span>
           </div>
-          <p class="meta">Acuitas360 · New Jersey, USA · Client: Helsinn Therapeutics</p>
+          <p class="meta">Acuitas360 · New Jersey, USA</p>
+          <p class="exp-project">Conversational AI agent for sales data questions</p>
+          <ul class="exp-list">
+            <li>Built a conversational AI agent with LangGraph, GPT-4o, FastAPI, and SQLite that turns plain-English questions into SQL over sales data (57K+ transactions), so sales reps can get answers on revenue, territory, and customer trends without waiting on the analytics team.</li>
+          </ul>
+          <p class="exp-project">Commercial excellence support for an oncology product (client: Helsinn Therapeutics)</p>
           <ul class="exp-list">
             <li>Used fuzzy matching on account demographics to map OneOncology accounts to 867 sales data, then tracked volume shifts and each group's share of growth.</li>
             <li>Built volume concentration curves for Akynzeo to show how business was spread and find the top accounts.</li>
             <li>Built an interactive Tableau dashboard for Akynzeo covering key KPIs and sales trends.</li>
-            <li>Delivered weekly rebate entity reports with Excel macros, and pulled Akynzeo data from SQL databases for the KAM tool.</li>
+            <li>Delivered weekly rebate entity reports for OneOncology, Unity, and multiple territories with Excel macros, and prepared Akynzeo data from SQL databases for the KAM tool.</li>
           </ul>
         </div>
 
@@ -669,11 +678,12 @@
             <h3>Associate</h3>
             <span class="dates">Sep 2020 – Dec 2021</span>
           </div>
-          <p class="meta">Cognizant Technology Solutions · Pune, India</p>
+          <p class="meta">Cognizant · India</p>
+          <p class="exp-project">Market mix modeling for a heart failure product</p>
           <ul class="exp-list">
-            <li>Market mix modeling for a heart failure drug: estimated the sales driven by each promotional channel (calls, samples, emails, direct mail, paid search).</li>
-            <li>Modeled monthly prescriptions in Python as a function of promotion and prior-month prescriptions to capture lag effects.</li>
-            <li>Segmented physicians by specialty, market decile, and prescribing decile, and calculated optimal spend and ROI by channel and segment.</li>
+            <li>Estimated the sales driven by each promotional channel (calls, samples, emails, direct mail, paid search), accounting for brand equity, sales lag, and historical efforts.</li>
+            <li>Modeled current-month prescriptions in Python as a function of promotion and previous-month prescriptions to capture lag effects.</li>
+            <li>Segmented physicians by specialty, market decile, and NRx decile, and calculated optimal spend and ROI by channel and segment.</li>
           </ul>
         </div>
 
@@ -682,12 +692,16 @@
             <h3>Senior Software Engineer</h3>
             <span class="dates">Apr 2017 – Sep 2020</span>
           </div>
-          <p class="meta">Nihilent · Pune, India</p>
+          <p class="meta">Nihilent · India</p>
+          <p class="exp-project">Commercial excellence support for a specialty migraine product</p>
           <ul class="exp-list">
-            <li>Supported the commercial excellence team for a specialty migraine product, delivering weekly and monthly KPI reports (referrals, new starts, drop-offs, net sales, persistency).</li>
-            <li>Built at-risk reports that flagged patients likely to drop off therapy.</li>
-            <li>Moved launch reporting from PowerPoint to Tableau dashboards for the sales and marketing teams.</li>
-            <li>Measured speaker program effectiveness with test-control analysis and recommended better targeting.</li>
+            <li>Delivered weekly and monthly reports with the onshore team on KPIs such as referrals, active patients, new starts, and net sales.</li>
+            <li>Created at-risk reports to flag patients likely to drop off therapy, and built Tableau dashboards for the sales and marketing teams.</li>
+          </ul>
+          <p class="exp-project">Internet banking and T24 development for Nedbank Africa</p>
+          <ul class="exp-list">
+            <li>Built Temenos Transact (INFO BASIC) routines for Nedbank's corporate internet banking during its move to Oracle FLEXCUBE.</li>
+            <li>Extracted account and loan data for credit bureau reporting, ran Close of Business (COB) in production, and fixed COB incidents.</li>
           </ul>
         </div>
 
@@ -696,9 +710,10 @@
             <h3>Programmer Analyst</h3>
             <span class="dates">Jan 2015 – Apr 2017</span>
           </div>
-          <p class="meta">Cognizant · Bengaluru, India</p>
+          <p class="meta">Cognizant · India</p>
+          <p class="exp-project">Development and customization for Bank Julius Baer, Singapore</p>
           <ul class="exp-list">
-            <li>Developed and supported banking applications on Temenos T24, including application development, data migration, and integration.</li>
+            <li>Developed and supported core banking applications on Temenos T24, including data customization, data migration, and integration.</li>
           </ul>
         </div>
       </div>
@@ -723,13 +738,16 @@
           </li>
           <li class="edu-item">
             <div class="experience-head">
-              <h3>B.Tech in Computer Science and Engineering · GPA 3.6/4</h3>
+              <h3>B.Tech. in Computer Science · GPA 3.6/4</h3>
               <span class="dates">Jul 2010 – May 2014</span>
             </div>
             <p>Rajasthan Technical University (SKIT), Jaipur, India</p>
           </li>
           <li class="edu-item">
-            <h3>Probability for AI (PAI)</h3>
+            <div class="experience-head">
+              <h3>Probability for AI (PAI)</h3>
+              <span class="dates">2026 · In progress</span>
+            </div>
             <p>
               Stanford University · Code in Place · Six-week program on
               probability, statistical inference, maximum likelihood
@@ -748,7 +766,8 @@
         <h2>Let's Connect</h2>
 
         <p>
-          I'm open to AI engineering and applied AI roles, and I'm always
+          I'm open to full-time AI Engineer, Applied AI, and Forward
+          Deployed Engineer roles, and I'm always
           happy to talk with people building AI for real business data.
         </p>
 
