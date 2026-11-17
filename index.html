@@ -382,6 +382,42 @@
     .edu-item h3 { margin: 0; color: var(--navy); font-size: 17px; }
     .edu-item p { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
 
+    /* ---------- About ---------- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+      gap: 56px;
+      align-items: start;
+      margin-top: 20px;
+    }
+
+    .about-text p { color: var(--muted); font-size: 17px; margin: 0 0 18px; }
+
+    .about-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+    }
+
+    .about-facts { list-style: none; padding: 0; margin: 18px 0 0; }
+    .about-facts li { padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .about-facts li:last-child { border-bottom: none; }
+
+    .fact-label {
+      display: block;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .fact-value { color: var(--navy); font-size: 15px; font-weight: 600; }
+
     /* ---------- Contact & footer ---------- */
     .contact-email { font-size: 17px; font-weight: 600; }
 
@@ -398,6 +434,8 @@
       .hero { grid-template-columns: 1fr; gap: 36px; padding: 60px 0; }
       .grid { grid-template-columns: 1fr; }
       .skills-more { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 28px; }
+      .about-side { max-width: 340px; }
       section { padding: 50px 0; }
     }
 
@@ -417,11 +455,11 @@
         <a href="#home" class="logo"><span class="logo-mark" aria-hidden="true">AG.</span>Aditi Gupta</a>
 
         <div class="nav-links">
-          <a href="#about">About</a>
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
+          <a href="#about">About</a>
           <a href="#contact">Contact</a>
           <!-- Upload your resume PDF to the repo with this exact file name -->
           <a href="Aditi_Gupta_Resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-resume">Resume</a>
@@ -485,21 +523,6 @@
         </div>
       </aside>
     </div>
-
-    <!-- ABOUT -->
-    <section id="about" class="soft">
-      <div class="container">
-        <h2>About Me</h2>
-        <p>
-          I've worked with pharmaceutical sales data and built
-          enterprise banking software, so I know how messy real
-          business data is and how much accuracy matters. Now I'm focused
-          on AI engineering: building agents that work with that kind of
-          data, with the checks that make them safe to trust, like human
-          review, audit logging, and evaluation.
-        </p>
-      </div>
-    </section>
 
     <!-- PROJECTS -->
     <section id="projects">
@@ -760,8 +783,55 @@
       </div>
     </section>
 
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <h2>About Me</h2>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I've worked with pharmaceutical sales data and built
+              enterprise banking software, so I know how messy real
+              business data is and how much accuracy matters. Now I'm focused
+              on AI engineering: building agents that work with that kind of
+              data, with the checks that make them safe to trust, like human
+              review, audit logging, and evaluation.
+            </p>
+            <p>
+              My path started in core banking software on Temenos T24, moved
+              into commercial analytics for pharma products, and then to an
+              M.S. in Computer Science at Stevens Institute of Technology.
+              That is nearly 8 years across analytics and software
+              engineering in healthcare and banking.
+            </p>
+          </div>
+
+          <aside class="about-side">
+            <!-- Upload aditi-gupta.jpg to the repo, next to index.html -->
+            <img class="about-photo" src="aditi-gupta.jpg" alt="Portrait of Aditi Gupta" width="800" height="800" loading="lazy">
+
+            <ul class="about-facts">
+              <li>
+                <span class="fact-label">Based in</span>
+                <span class="fact-value">Somerset, New Jersey, United States</span>
+              </li>
+              <li>
+                <span class="fact-label">Education</span>
+                <span class="fact-value">M.S. in Computer Science, Stevens Institute of Technology</span>
+              </li>
+              <li>
+                <span class="fact-label">Open to</span>
+                <span class="fact-value">AI Engineer, Applied AI, and Forward Deployed Engineer roles</span>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT -->
-    <section id="contact">
+    <section id="contact" class="soft">
       <div class="container">
         <h2>Let's Connect</h2>
 
