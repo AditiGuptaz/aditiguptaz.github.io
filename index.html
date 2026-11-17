@@ -385,30 +385,49 @@
     /* ---------- About ---------- */
     .about-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 56px;
       align-items: start;
-      margin-top: 20px;
+      margin-top: 24px;
     }
 
-    .about-text p { color: var(--muted); font-size: 17px; margin: 0 0 18px; }
+    .about-intro {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
 
     .about-photo {
-      display: block;
-      width: 100%;
-      height: auto;
-      aspect-ratio: 1 / 1;
+      width: 112px;
+      height: 112px;
+      flex-shrink: 0;
+      border-radius: 50%;
       object-fit: cover;
-      border-radius: 18px;
       border: 1px solid var(--border);
+      background: var(--soft);
     }
 
-    .about-facts { list-style: none; padding: 0; margin: 18px 0 0; }
-    .about-facts li { padding: 14px 0; border-bottom: 1px solid var(--border); }
-    .about-facts li:last-child { border-bottom: none; }
+    .about-text .about-name { margin: 0; color: var(--navy); font-size: 19px; font-weight: 700; }
+    .about-text .about-role { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+
+    .about-text p { color: var(--muted); font-size: 17px; margin: 0 0 16px; }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-facts { list-style: none; padding: 0; margin: 0; }
+
+    .about-facts li {
+      display: grid;
+      grid-template-columns: 130px minmax(0, 1fr);
+      gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-facts li:first-child { padding-top: 4px; }
 
     .fact-label {
-      display: block;
+      padding-top: 3px;
       color: var(--blue);
       font-size: 12px;
       font-weight: 700;
@@ -417,6 +436,7 @@
     }
 
     .fact-value { color: var(--navy); font-size: 15px; font-weight: 600; }
+    .fact-value span { display: block; }
 
     /* ---------- Contact & footer ---------- */
     .contact-email { font-size: 17px; font-weight: 600; }
@@ -435,13 +455,13 @@
       .grid { grid-template-columns: 1fr; }
       .skills-more { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; gap: 28px; }
-      .about-side { max-width: 340px; }
       section { padding: 50px 0; }
     }
 
     @media (max-width: 700px) {
       nav { flex-direction: column; align-items: flex-start; }
       .nav-links { gap: 12px 16px; }
+      .about-facts li { grid-template-columns: 1fr; gap: 2px; }
     }
   </style>
 </head>
@@ -790,6 +810,15 @@
 
         <div class="about-grid">
           <div class="about-text">
+            <div class="about-intro">
+              <!-- Upload aditi-gupta.jpg to the repo, next to index.html -->
+              <img class="about-photo" src="aditi-gupta.jpg" alt="Portrait of Aditi Gupta" width="112" height="112">
+              <div>
+                <p class="about-name">Aditi Gupta</p>
+                <p class="about-role">AI Engineer · Applied AI</p>
+              </div>
+            </div>
+
             <p>
               I've worked with pharmaceutical sales data and built
               enterprise banking software, so I know how messy real
@@ -802,30 +831,34 @@
               My path started in core banking software on Temenos T24, moved
               into commercial analytics for pharma products, and then to an
               M.S. in Computer Science at Stevens Institute of Technology.
-              That is nearly 8 years across analytics and software
-              engineering in healthcare and banking.
             </p>
           </div>
 
-          <aside class="about-side">
-            <!-- Upload aditi-gupta.jpg to the repo, next to index.html -->
-            <img class="about-photo" src="aditi-gupta.jpg" alt="Portrait of Aditi Gupta" width="800" height="800" loading="lazy">
-
-            <ul class="about-facts">
-              <li>
-                <span class="fact-label">Based in</span>
-                <span class="fact-value">Somerset, New Jersey, United States</span>
-              </li>
-              <li>
-                <span class="fact-label">Education</span>
-                <span class="fact-value">M.S. in Computer Science, Stevens Institute of Technology</span>
-              </li>
-              <li>
-                <span class="fact-label">Open to</span>
-                <span class="fact-value">AI Engineer, Applied AI, and Forward Deployed Engineer roles</span>
-              </li>
-            </ul>
-          </aside>
+          <ul class="about-facts">
+            <li>
+              <span class="fact-label">Education</span>
+              <span class="fact-value">
+                <span>M.S. in Computer Science, Stevens Institute of Technology</span>
+                <span>B.Tech. in Computer Science, Rajasthan Technical University</span>
+              </span>
+            </li>
+            <li>
+              <span class="fact-label">Background</span>
+              <span class="fact-value">Nearly 8 years in analytics and software engineering across healthcare and banking</span>
+            </li>
+            <li>
+              <span class="fact-label">Learning</span>
+              <span class="fact-value">Stanford Probability for AI (in progress, 2026)</span>
+            </li>
+            <li>
+              <span class="fact-label">Based in</span>
+              <span class="fact-value">Somerset, New Jersey, United States</span>
+            </li>
+            <li>
+              <span class="fact-label">Open to</span>
+              <span class="fact-value">AI Engineer, Applied AI, and Forward Deployed Engineer roles</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
