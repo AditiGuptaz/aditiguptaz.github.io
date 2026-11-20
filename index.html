@@ -589,16 +589,18 @@
 
         <h2>Reliability testing for a browser agent</h2>
         <p>
-          An agent that searches Yelp for restaurants matching rating and
-          review criteria. I'm measuring where it goes wrong and how much
-          tighter instructions and output checks improve it.
+          40 hand-scored runs showed the agent claimed success every time but
+          was wrong a third of the time. Now fixing the failure types the tests
+          found, and testing on a second site.
         </p>
 
         <ul class="check-list">
-          <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#168B88" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Failure analysis of early runs</li>
-          <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#168B88" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Constrained task prompt (12 steps down to 4)</li>
-          <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" class="todo" fill="none" stroke="#647779" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/></svg><span>Test set with repeated runs <span class="next-label">· next</span></span></li>
-          <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" class="todo" fill="none" stroke="#647779" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/></svg><span>Output verification against the page <span class="next-label">· next</span></span></li>
+          <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#168B88" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Test set with 40 scored runs</li>
+          <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#168B88" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Found the failures: wrong choices, invented tags, ads read as results</li>
+          <li><svg aria-hidden="true" class="todo" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#647779" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/></svg><span>Code makes the final choice <span class="next-label">· next</span></span></li>
+          <li><svg aria-hidden="true" class="todo" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#647779" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/></svg><span>Check answers on the restaurant's page <span class="next-label">· next</span></span></li>
+          <li><svg aria-hidden="true" class="todo" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#647779" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/></svg><span>Detect and skip ads <span class="next-label">· next</span></span></li>
+          <li><svg aria-hidden="true" class="todo" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#647779" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/></svg><span>Google Maps as a second site <span class="next-label">· next</span></span></li>
         </ul>
 
         <div class="tags">
@@ -658,6 +660,27 @@
             </div>
             <a class="project-link"
                href="https://github.com/AditiGuptaz/PRIOR-AUTHORIZATION-MULTI-AGENT-SYSTEM"
+               target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+          </div>
+
+          <div class="card">
+            <div class="card-label">Evaluation · Browser agent</div>
+            <h3>Browser Agent Reliability on Yelp</h3>
+            <p>
+              A browser agent that finds restaurants on Yelp, tested on 40
+              hand-scored runs. It claimed success every time but was wrong a
+              third of the time. A stricter prompt made it 2.5 times cheaper but
+              over-cautious; letting code make the final choice from the
+              agent's own list reached 80% correct at 40% of the cost.
+            </p>
+            <div class="tags">
+              <span class="tag">browser-use</span>
+              <span class="tag">GPT-4o</span>
+              <span class="tag">Pydantic</span>
+              <span class="tag">Python</span>
+            </div>
+            <a class="project-link"
+               href="https://github.com/AditiGuptaz/browser-agent"
                target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
           </div>
 
