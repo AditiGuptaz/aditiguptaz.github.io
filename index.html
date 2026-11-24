@@ -782,8 +782,70 @@
         </p>
 
         <div class="grid">
+          <div class="card featured">
+            <div class="flow" aria-label="How the test works">
+              <ol class="flow-steps">
+                <li><span class="step">Search task</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Agent reads Yelp</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Lists restaurants</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step key">Code picks</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Scored vs answer key</span></li>
+              </ol>
+              <p class="flow-note">Every run is <strong>scored against a hand-checked answer key</strong>, not the agent's own claim of success.</p>
+            </div>
+            <div class="card-label">Evaluation · Browser agent</div>
+            <h3>Browser Agent Reliability on Yelp</h3>
+            <p>
+              A browser agent that finds restaurants on Yelp, tested on 40
+              hand-scored runs. It claimed success every time but was wrong a
+              third of the time. A stricter prompt made it 2.5 times cheaper but
+              over-cautious; letting code make the final choice from the
+              agent's own list reached 80% correct at 40% of the cost.
+            </p>
+            <div class="tags">
+              <span class="tag">browser-use</span>
+              <span class="tag">GPT-4o</span>
+              <span class="tag">Pydantic</span>
+              <span class="tag">Python</span>
+            </div>
+            <a class="project-link"
+               href="https://github.com/AditiGuptaz/browser-agent"
+               target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+          </div>
 
           <div class="card featured">
+            <div class="flow" aria-label="How the evaluation works">
+              <ol class="flow-steps">
+                <li><span class="step">Question + schema</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">5 LLMs write SQL</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Run on SQLite</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Compare to answer key</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step key">Audit every failure</span></li>
+              </ol>
+              <p class="flow-note">Scored on <strong>results, not SQL text</strong>, because two different queries can both be correct.</p>
+            </div>
+            <div class="card-label">Evaluation · Text-to-SQL</div>
+            <h3>LLM Text-to-SQL Evaluation</h3>
+            <p>
+              Tests 5 LLMs on 20 hard questions about IPL cricket data. Each
+              model's SQL is run on the real database and its answer compared
+              to a hand-written answer key. The best model scored 17/20. When I
+              checked all 24 failures, only 1 was a real SQL mistake. The rest
+              came from my grader, my answer key, or the token limit.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">pandas</span>
+              <span class="tag">OpenRouter</span>
+              <span class="tag">LangChain</span>
+            </div>
+            <a class="project-link"
+               href="https://github.com/AditiGuptaz/llm-sql-eval"
+               target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+          </div>
+
+          <div class="card">
             <div class="flow" aria-label="How the agent works">
               <ol class="flow-steps">
                 <li><span class="step">Clinical note</span><span class="flow-arrow" aria-hidden="true">→</span></li>
@@ -816,7 +878,7 @@
                target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
           </div>
 
-          <div class="card featured">
+          <div class="card">
             <div class="flow" aria-label="How the agents work together">
               <ol class="flow-steps">
                 <li><span class="step">MRI request</span><span class="flow-arrow" aria-hidden="true">→</span></li>
@@ -847,70 +909,6 @@
           </div>
 
           <div class="card">
-            <div class="flow" aria-label="How the test works">
-              <ol class="flow-steps">
-                <li><span class="step">Search task</span><span class="flow-arrow" aria-hidden="true">→</span></li>
-                <li><span class="step">Agent reads Yelp</span><span class="flow-arrow" aria-hidden="true">→</span></li>
-                <li><span class="step">Lists restaurants</span><span class="flow-arrow" aria-hidden="true">→</span></li>
-                <li><span class="step key">Code picks</span><span class="flow-arrow" aria-hidden="true">→</span></li>
-                <li><span class="step">Scored vs answer key</span></li>
-              </ol>
-              <p class="flow-note">Every run is <strong>scored against a hand-checked answer key</strong>, not the agent's own claim of success.</p>
-            </div>
-            <div class="card-label">Evaluation · Browser agent</div>
-            <h3>Browser Agent Reliability on Yelp</h3>
-            <p>
-              A browser agent that finds restaurants on Yelp, tested on 40
-              hand-scored runs. It claimed success every time but was wrong a
-              third of the time. A stricter prompt made it 2.5 times cheaper but
-              over-cautious; letting code make the final choice from the
-              agent's own list reached 80% correct at 40% of the cost.
-            </p>
-            <div class="tags">
-              <span class="tag">browser-use</span>
-              <span class="tag">GPT-4o</span>
-              <span class="tag">Pydantic</span>
-              <span class="tag">Python</span>
-            </div>
-            <a class="project-link"
-               href="https://github.com/AditiGuptaz/browser-agent"
-               target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
-          </div>
-
-          <div class="card">
-            <div class="flow" aria-label="How the evaluation works">
-              <ol class="flow-steps">
-                <li><span class="step">Question + schema</span><span class="flow-arrow" aria-hidden="true">→</span></li>
-                <li><span class="step">5 LLMs write SQL</span><span class="flow-arrow" aria-hidden="true">→</span></li>
-                <li><span class="step">Run on SQLite</span><span class="flow-arrow" aria-hidden="true">→</span></li>
-                <li><span class="step">Compare to answer key</span><span class="flow-arrow" aria-hidden="true">→</span></li>
-                <li><span class="step key">Audit every failure</span></li>
-              </ol>
-              <p class="flow-note">Scored on <strong>results, not SQL text</strong>, because two different queries can both be correct.</p>
-            </div>
-            <div class="card-label">Evaluation · Text-to-SQL</div>
-            <h3>LLM Text-to-SQL Evaluation</h3>
-            <p>
-              Tests 5 LLMs on 20 hard questions about IPL cricket data. Each
-              model's SQL is run on the real database and its answer compared
-              to a hand-written answer key. The best model scored 17/20. When I
-              checked all 24 failures, only 1 was a real SQL mistake. The rest
-              came from my grader, my answer key, or the token limit.
-            </p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">SQLite</span>
-              <span class="tag">pandas</span>
-              <span class="tag">OpenRouter</span>
-              <span class="tag">LangChain</span>
-            </div>
-            <a class="project-link"
-               href="https://github.com/AditiGuptaz/llm-sql-eval"
-               target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
-          </div>
-
-
-          <div class="card">
             <div class="card-label">Data · Text-to-SQL</div>
             <h3>Conversational Sales Data Agent</h3>
             <p>
@@ -926,9 +924,7 @@
               <span class="tag">FastAPI</span>
               <span class="tag">SQLite</span>
             </div>
-            <a class="project-link"
-               href="https://github.com/AditiGuptaz/867-Sales-Agent-API-with-caching"
-               target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+            <span class="project-note">Built at Acuitas360 · code private</span>
           </div>
 
           <div class="card">
@@ -967,7 +963,6 @@
                href="https://github.com/AditiGuptaz/qlora-sentiment-classifier"
                target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
           </div>
-
         </div>
       </div>
     </section>
@@ -978,13 +973,13 @@
         <h2>Technical Skills</h2>
 
         <p class="skills-label">What I build with most</p>
-        <p class="core-stack">Python, SQL, LangGraph, CrewAI, RAG, FastAPI, and Tableau.</p>
+        <p class="core-stack">Python, SQL, LangGraph, CrewAI, RAG, LLM evaluation, and FastAPI.</p>
 
         <p class="skills-label">Also work with</p>
         <div class="skills-more">
-          <p><strong>AI &amp; Agents:</strong> LangChain, ChromaDB, RAG evaluation, QLoRA fine-tuning</p>
+          <p><strong>AI &amp; Agents:</strong> LangChain, ChromaDB, browser-use, OpenRouter, RAG evaluation, QLoRA fine-tuning</p>
           <p><strong>Backend &amp; Web:</strong> Pydantic, Docker, Streamlit, HTML, CSS, JavaScript, Node.js, React.js</p>
-          <p><strong>Data &amp; Analytics:</strong> MS Excel (Advanced), market mix modeling, segmentation, patient analytics</p>
+          <p><strong>Data &amp; Analytics:</strong> Tableau, pandas, SQLite, MS Excel (Advanced), market mix modeling, segmentation, patient analytics</p>
           <p><strong>Machine Learning:</strong> scikit-learn, logistic regression, neural networks, probabilistic models, MLE, gradient ascent</p>
         </div>
       </div>
@@ -994,6 +989,15 @@
     <section id="experience">
       <div class="container">
         <h2>Professional Experience</h2>
+
+        <div class="experience">
+          <div class="experience-head">
+            <h3>Career break</h3>
+            <span class="dates">Apr 2025 – Present</span>
+          </div>
+          <p class="meta">Full-time parenting</p>
+          <p>Alongside it, I've been building and testing the AI projects above and taking Stanford's Probability for AI program.</p>
+        </div>
 
         <div class="experience">
           <div class="experience-head">
