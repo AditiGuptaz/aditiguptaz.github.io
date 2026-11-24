@@ -644,6 +644,8 @@
         border-bottom: 1px solid var(--border);
       }
 
+      .nav-links a:last-child { border-bottom: none; }
+
       .nav-links a.nav-resume {
         margin-top: 14px;
         text-align: center;
@@ -682,7 +684,7 @@
   <header>
     <div class="container">
       <nav>
-        <a href="#home" class="logo"><span class="logo-mark" aria-hidden="true">AG.</span><span class="logo-text"><span class="logo-name">Aditi Gupta</span><span class="logo-role">AI Engineer · Forward Deployed</span></span></a>
+        <a href="#home" class="logo"><span class="logo-mark" aria-hidden="true">AG.</span><span class="logo-text"><span class="logo-name">Aditi Gupta</span><span class="logo-role">AI Engineer · Applied AI</span></span></a>
 
         <div class="nav-right">
         <div class="nav-links" id="nav-links">
@@ -692,8 +694,6 @@
           <a href="#education">Education</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
-          <!-- Upload your resume PDF to the repo with this exact file name -->
-          <a href="Aditi_Gupta_Resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-resume">Resume</a>
         </div>
 
         <div class="nav-actions">
@@ -909,25 +909,6 @@
                target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
           </div>
 
-          <div class="card">
-            <div class="card-label">Data · Text-to-SQL</div>
-            <h3>Conversational Sales Data Agent</h3>
-            <p>
-              Ask a question about sales data (57K+ transactions) in plain
-              English and get an answer. A LangGraph agent turns the
-              question into SQL, runs it, and explains the result. Served through a FastAPI
-              endpoint with caching, so repeat questions come back fast.
-            </p>
-            <div class="tags">
-              <span class="tag">LangGraph</span>
-              <span class="tag">GPT-4o</span>
-              <span class="tag">FastAPI</span>
-              <span class="tag">SQLite</span>
-            </div>
-            <a class="project-link"
-               href="https://github.com/AditiGuptaz/867-Sales-Agent-API-with-caching"
-               target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
-          </div>
 
           <div class="card">
             <div class="card-label">ML app · Deployment</div>
