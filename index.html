@@ -368,6 +368,56 @@
       font-style: italic;
     }
 
+    /* ---------- Project flow diagrams ---------- */
+    .flow {
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin: 0 0 18px;
+    }
+
+    .flow-steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .flow-steps li { display: inline-flex; align-items: center; gap: 6px; }
+
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 9px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    .step.key {
+      background: var(--badge-bg);
+      border-color: var(--badge-bg);
+      color: var(--badge-text);
+    }
+
+    .flow-arrow { color: var(--muted); font-size: 13px; }
+
+    .card .flow-note {
+      margin: 10px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .flow-note strong { color: var(--navy); font-weight: 600; }
+
     /* ---------- Skills ---------- */
     .skills-label {
       margin: 0 0 8px;
@@ -503,12 +553,29 @@
     .contact-email { font-size: 17px; font-weight: 600; }
 
     footer {
-      text-align: center;
-      padding: 30px;
+      background: var(--soft);
       border-top: 1px solid var(--border);
       color: var(--muted);
       font-size: 14px;
+      padding: 26px 0;
     }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+    }
+
+    .footer-links a { color: var(--navy); font-weight: 600; }
+    .footer-links a:hover { color: var(--blue); }
 
     /* ---------- Phones and small tablets ---------- */
     @media (max-width: 860px) {
@@ -623,6 +690,17 @@
         <div class="grid">
 
           <div class="card featured">
+            <div class="flow" aria-label="How the agent works">
+              <ol class="flow-steps">
+                <li><span class="step">Clinical note</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Extract</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Retrieve guidelines</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Safety check</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Risk score</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step key">Human review</span></li>
+              </ol>
+              <p class="flow-note"><strong>Human review</strong> only when risk is High or a medication is unsafe. Everything else goes straight to the report and audit log.</p>
+            </div>
             <div class="card-label">Healthcare · Single agent</div>
             <h3>Patient Risk Flagging Agent</h3>
             <p>
@@ -644,6 +722,16 @@
           </div>
 
           <div class="card featured">
+            <div class="flow" aria-label="How the agents work together">
+              <ol class="flow-steps">
+                <li><span class="step">MRI request</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Extractor</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Policy checker</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Writer</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step key">Reviewer</span></li>
+              </ol>
+              <p class="flow-note"><strong>Reviewer</strong> sends the letter back to the writer if it overstates the case, up to 3 rounds.</p>
+            </div>
             <div class="card-label">Healthcare · Multi-agent</div>
             <h3>Prior Authorization Multi-Agent System</h3>
             <p>
@@ -664,6 +752,16 @@
           </div>
 
           <div class="card">
+            <div class="flow" aria-label="How the test works">
+              <ol class="flow-steps">
+                <li><span class="step">Search task</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Agent reads Yelp</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Lists restaurants</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step key">Code picks</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Scored vs answer key</span></li>
+              </ol>
+              <p class="flow-note">Every run is <strong>scored against a hand-checked answer key</strong>, not the agent's own claim of success.</p>
+            </div>
             <div class="card-label">Evaluation · Browser agent</div>
             <h3>Browser Agent Reliability on Yelp</h3>
             <p>
@@ -980,7 +1078,15 @@
   </main>
 
   <footer>
-    © 2026 Aditi Gupta · Built with HTML, CSS &amp; JavaScript
+    <div class="container footer-inner">
+      <span>© 2026 Aditi Gupta · Built with HTML, CSS &amp; JavaScript</span>
+      <div class="footer-links">
+        <a href="https://github.com/AditiGuptaz" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/aditi-gupta-78bb518b/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="Aditi_Gupta_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+        <a href="#home">Back to top ↑</a>
+      </div>
+    </div>
   </footer>
 
   <!-- Light / dark button: switch the theme and remember the choice -->
