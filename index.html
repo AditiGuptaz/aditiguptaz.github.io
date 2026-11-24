@@ -3,8 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Aditi Gupta - AI Engineer building AI agents and RAG systems, from retrieval to evaluation">
+  <meta name="description" content="Aditi Gupta - AI Engineer who builds AI agents and evaluates how reliable they are">
   <title>Aditi Gupta | AI Engineering</title>
+
+  <!-- Link preview card for LinkedIn, Slack, X, etc. (og-image.png sits next to index.html) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aditiguptaz.github.io/">
+  <meta property="og:title" content="Aditi Gupta | AI Engineer">
+  <meta property="og:description" content="I build AI agents and evaluate how reliable they are. Projects in agent evaluation, LangGraph, CrewAI, RAG, and text-to-SQL.">
+  <meta property="og:image" content="https://aditiguptaz.github.io/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Aditi Gupta, AI Engineer: I build AI agents and evaluate how reliable they are.">
+  <meta name="twitter:card" content="summary_large_image">
 
   <!-- Browser tab icon (favicon): AG on the site's dark teal -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23123F45'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='700' fill='%238FE0D6'%3EAG%3C/text%3E%3C/svg%3E">
@@ -106,6 +117,17 @@
 
     .logo:hover { text-decoration: none; }
 
+    .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+
+    .logo-role {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+
     .logo-mark {
       display: inline-flex;
       align-items: center;
@@ -143,7 +165,10 @@
       text-decoration: none;
     }
 
-    .theme-toggle {
+    .nav-right { display: flex; align-items: center; gap: 22px; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+    .theme-toggle, .menu-toggle {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -157,8 +182,13 @@
       cursor: pointer;
     }
 
-    .theme-toggle:hover { background: var(--soft); }
-    .theme-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    .theme-toggle:hover, .menu-toggle:hover { background: var(--soft); }
+    .theme-toggle:focus-visible, .menu-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+    .menu-toggle { display: none; }
+    .menu-toggle .icon-close { display: none; }
+    .menu-toggle[aria-expanded="true"] .icon-menu { display: none; }
+    .menu-toggle[aria-expanded="true"] .icon-close { display: block; }
     .theme-toggle .icon-sun { display: none; }
     :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
     :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
@@ -346,6 +376,15 @@
       font-size: 12px;
       font-weight: 600;
     }
+
+    .card .card-next {
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .card .card-next strong { color: var(--navy); }
+    .card .card-next code { font-size: 13px; color: var(--navy); }
 
     .project-link {
       display: inline-flex;
@@ -578,6 +617,40 @@
     .footer-links a:hover { color: var(--blue); }
 
     /* ---------- Phones and small tablets ---------- */
+    /* Three-line menu: tablets and phones */
+    @media (max-width: 1000px) {
+      .menu-toggle { display: inline-flex; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 6px 5% 16px;
+        background: var(--background);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links a {
+        padding: 12px 0;
+        font-size: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links a.nav-resume {
+        margin-top: 14px;
+        text-align: center;
+        padding: 10px 14px;
+      }
+    }
+
     @media (max-width: 860px) {
       .hero { grid-template-columns: 1fr; gap: 36px; padding: 60px 0; }
       .grid { grid-template-columns: 1fr; }
@@ -586,9 +659,17 @@
       section { padding: 50px 0; }
     }
 
+    /* Very narrow phones: shrink the logo so the buttons fit */
+    @media (max-width: 420px) {
+      nav { gap: 10px; }
+      .logo { gap: 9px; font-size: 17px; }
+      .logo-mark { width: 36px; height: 36px; font-size: 14px; border-radius: 9px; }
+      .logo-role { font-size: 11px; }
+      .nav-actions { gap: 6px; }
+      .theme-toggle, .menu-toggle { width: 34px; height: 34px; }
+    }
+
     @media (max-width: 700px) {
-      nav { flex-direction: column; align-items: flex-start; }
-      .nav-links { gap: 12px 16px; }
       .about-facts li { grid-template-columns: 1fr; gap: 2px; }
     }
   </style>
@@ -600,9 +681,10 @@
   <header>
     <div class="container">
       <nav>
-        <a href="#home" class="logo"><span class="logo-mark" aria-hidden="true">AG.</span>Aditi Gupta</a>
+        <a href="#home" class="logo"><span class="logo-mark" aria-hidden="true">AG.</span><span class="logo-text"><span class="logo-name">Aditi Gupta</span><span class="logo-role">AI Engineer · Forward Deployed</span></span></a>
 
-        <div class="nav-links">
+        <div class="nav-right">
+        <div class="nav-links" id="nav-links">
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
           <a href="#experience">Experience</a>
@@ -611,10 +693,20 @@
           <a href="#contact">Contact</a>
           <!-- Upload your resume PDF to the repo with this exact file name -->
           <a href="Aditi_Gupta_Resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-resume">Resume</a>
+        </div>
+
+        <div class="nav-actions">
           <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch between light and dark mode" title="Light / dark mode">
             <svg class="icon-moon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.2A8.5 8.5 0 1 1 10.8 3.5a6.6 6.6 0 0 0 9.7 9.7z"/></svg>
             <svg class="icon-sun" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
           </button>
+
+          <!-- Three-line menu button: only shows on phones and small tablets -->
+          <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+            <svg class="icon-menu" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            <svg class="icon-close" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
         </div>
       </nav>
     </div>
@@ -627,13 +719,14 @@
       <div>
         <div class="eyebrow">AI Engineer · Applied AI</div>
 
-        <h1>I build AI agents and RAG systems, from retrieval to evaluation.</h1>
+        <h1>I build AI agents and evaluate how reliable they are.</h1>
 
         <p>
-          Hi, I'm Aditi. I spent nearly 8 years in analytics and software
-          engineering across healthcare and banking, working with sales,
-          prescription, and patient data. Now I build agentic AI systems
-          with human review, audit trails, and evaluation built in.
+          Hi, I'm Aditi. I build AI agents and then try to prove whether
+          they work. My browser agent said it succeeded on all 40 runs but
+          was wrong a third of the time. Finding gaps like that is the part
+          I enjoy most. Before this, I spent nearly 8 years in analytics and
+          software engineering across healthcare and banking.
         </p>
 
         <p>
@@ -681,7 +774,7 @@
     <!-- PROJECTS -->
     <section id="projects">
       <div class="container">
-        <h2>Selected Projects</h2>
+        <h2>AI Projects</h2>
 
         <p class="section-description">
           Agentic AI systems, RAG and evaluation, ML apps, and fine-tuning work.
@@ -707,9 +800,10 @@
               A LangGraph agent that reads a clinical note, checks
               medications against kidney function, and scores patient
               risk as Low, Medium, or High. It pulls clinical guidance
-              with RAG (ChromaDB), pauses for human review on high-risk
-              or unsafe cases, and logs every outcome to an audit trail.
+              with RAG (ChromaDB), flags high-risk or unsafe cases for
+              human review, and logs every outcome to an audit trail.
             </p>
+            <p class="card-next"><strong>Next:</strong> make the agent actually pause and wait for a person to approve high-risk cases (LangGraph <code>interrupt()</code>).</p>
             <div class="tags">
               <span class="tag">LangGraph</span>
               <span class="tag">GPT-4o-mini</span>
@@ -783,21 +877,35 @@
           </div>
 
           <div class="card">
-            <div class="card-label">RAG · Evaluation</div>
-            <h3>RAG Chatbot and RAG Evaluation</h3>
+            <div class="flow" aria-label="How the evaluation works">
+              <ol class="flow-steps">
+                <li><span class="step">Question + schema</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">5 LLMs write SQL</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Run on SQLite</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step">Compare to answer key</span><span class="flow-arrow" aria-hidden="true">→</span></li>
+                <li><span class="step key">Audit every failure</span></li>
+              </ol>
+              <p class="flow-note">Scored on <strong>results, not SQL text</strong>, because two different queries can both be correct.</p>
+            </div>
+            <div class="card-label">Evaluation · Text-to-SQL</div>
+            <h3>LLM Text-to-SQL Evaluation</h3>
             <p>
-              A chatbot that answers questions from an uploaded PDF, and
-              an evaluation pipeline that measures retrieval and answer
-              quality.
+              Tests 5 LLMs on 20 hard questions about IPL cricket data. Each
+              model's SQL is run on the real database and its answer compared
+              to a hand-written answer key. The best model scored 17/20. When I
+              checked all 24 failures, only 1 was a real SQL mistake. The rest
+              came from my grader, my answer key, or the token limit.
             </p>
             <div class="tags">
-              <span class="tag">RAG</span>
-              <span class="tag">OpenAI embeddings</span>
-              <span class="tag">Chroma</span>
               <span class="tag">Python</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">pandas</span>
+              <span class="tag">OpenRouter</span>
+              <span class="tag">LangChain</span>
             </div>
-            <!-- Replace this note with a GitHub link once the repo is public -->
-            <span class="project-note">Repo coming soon</span>
+            <a class="project-link"
+               href="https://github.com/AditiGuptaz/llm-sql-eval"
+               target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
           </div>
 
           <div class="card">
@@ -835,8 +943,9 @@
               <span class="tag">Pydantic</span>
               <span class="tag">Docker</span>
             </div>
-            <!-- Replace this note with a GitHub or Docker Hub link -->
-            <span class="project-note">Repo coming soon</span>
+            <a class="project-link"
+               href="https://github.com/AditiGuptaz/Insurance-premium-predictor"
+               target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
           </div>
 
           <div class="card">
@@ -1088,6 +1197,33 @@
       </div>
     </div>
   </footer>
+
+  <!-- Mobile menu: open and close the three-line menu -->
+  <script>
+    (function () {
+      var toggle = document.getElementById("menu-toggle");
+      var links = document.getElementById("nav-links");
+      if (!toggle || !links) return;
+
+      function setOpen(open) {
+        links.classList.toggle("open", open);
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      }
+
+      toggle.addEventListener("click", function () {
+        setOpen(!links.classList.contains("open"));
+      });
+
+      // Close the menu after tapping a link, or with the Escape key
+      links.addEventListener("click", function (e) {
+        if (e.target.closest("a")) setOpen(false);
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") setOpen(false);
+      });
+    })();
+  </script>
 
   <!-- Light / dark button: switch the theme and remember the choice -->
   <script>
